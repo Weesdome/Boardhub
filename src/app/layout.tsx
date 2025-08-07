@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WisdomHub - Trello-like Board Management",
+  title: "WisdomHub",
   description: "A beautiful and intuitive board management application",
 };
 
