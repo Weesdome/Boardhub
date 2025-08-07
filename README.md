@@ -1,167 +1,99 @@
-# WisdomHub - Trello-like Board Management
+# 🧠 WisdomHub – A Board Management App
 
-A beautiful and intuitive board management application built with Next.js, TypeScript, and MongoDB. Features include authentication, drag-and-drop functionality, dark mode, and a responsive design.
+Welcome to **WisdomHub**, my take on a lightweight, elegant board management tool inspired by Trello. This project was designed to demonstrate full-stack engineering skills and deliver an intuitive experience for both users and developers inspecting the codebase.
 
-## Features
+Built with **Next.js 15**, **TypeScript**, and **MongoDB**, this app features manual authentication, drag-and-drop functionality using `@dnd-kit`, dark/light theme support, and polished UX with skeleton loaders and empty states.
+
+---
+
+## 🚀 Why I Built WisdomHub
+
+This project was created as part of a 24-hour full-stack challenge. The goal was to build the **first usable slice** of a collaborative board app, focusing on both:
+
+- 👩‍💼 **User Experience** – what a manager/team member would interact with
+- 👨‍💻 **Engineering Craft** – what a senior developer would evaluate in code
+
+Rather than relying on tools like Auth0 or Firebase, I implemented **manual auth**, session handling, and CSRF protection myself to ensure maximum control over the backend.
+
+---
+
+## 🔧 Features Overview
 
 ### 🔐 Authentication
-- Manual authentication (no 3rd-party providers)
-- Session management with cookies
-- CSRF token handling
-- Login and registration pages
+I implemented manual auth from scratch using:
+- **bcryptjs** for password hashing
+- **cookies** for secure session handling
+- **CSRF tokens** to protect form submissions
+
+Users can **register**, **log in**, and **stay signed in** across sessions.
+
+---
 
 ### 🏠 Dashboard
-- View all user boards
-- Create, edit, and delete boards
-- Beautiful card-based layout
-- Skeleton loading states
+Once logged in, users are directed to a **dashboard** that displays all their boards. Key capabilities:
+- ✅ Create new boards
+- 📝 Edit board names
+- ❌ Delete boards
+- ✨ Beautiful card-based layout with Tailwind
+- ⏳ Skeleton loaders while data fetches
 
-### 🗂 Board Management
-- Create and manage lists
-- Add, edit, and delete cards
-- Drag and drop functionality for lists and cards
-- Real-time updates
+---
 
-### 🌗 Theme Support
-- Light and dark mode
-- System preference detection
-- Manual theme toggle
-- Consistent theming across all components
+### 🗂 Board View
+Each board contains **lists** and **cards**, which I built using MongoDB's flexible document structure. You can:
+- Add, rename, delete **lists**
+- Add, rename, delete **cards**
+- Reorder both using smooth **drag and drop** (via `@dnd-kit`)
+- Move cards between lists
+- Get real-time visual feedback when dragging
 
-### 💤 Loading States
-- Skeleton loaders for better UX
-- Empty states with encouraging messages
-- Error boundaries for graceful error handling
+---
 
-## Tech Stack
+### 🌗 Theme Toggle
+I added support for:
+- **Light and dark modes**
+- **System preference detection**
+- **Manual toggling** from anywhere in the app
 
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS
-- **Database**: MongoDB with Mongoose
-- **Authentication**: bcryptjs for password hashing
-- **Drag & Drop**: @dnd-kit
-- **Theme**: next-themes
-- **State Management**: React hooks
+Tailwind’s utility-first approach made it seamless to implement consistent theming.
 
-## Getting Started
+---
 
-### Prerequisites
+### 💤 Loading & Empty States
+Good UX isn’t just about functionality. I also included:
+- **Skeleton loaders** while data is fetching
+- **Encouraging empty states** when a board, list, or card doesn’t exist yet
+- A **global error boundary** and a custom 404 page
 
-- Node.js 18+ 
-- MongoDB (local or cloud instance)
-- npm or yarn
+---
 
-### Installation
+## 🧱 Tech Stack
 
-1. Clone the repository:
+| Layer         | Technology           |
+|---------------|----------------------|
+| Frontend      | Next.js 15, React 19, Tailwind CSS, TypeScript |
+| Backend       | Next.js API Routes / Server Actions |
+| Database      | MongoDB (via native driver) |
+| Auth          | bcryptjs, cookie, csrf |
+| Drag & Drop   | `@dnd-kit` |
+| Theming       | `next-themes` |
+| Logging       | `pino` |
+| State Mgmt    | React Hooks |
+
+---
+
+## 📁 Project Structure
+
 ```bash
-git clone <repository-url>
-cd wisdomhub
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env.local` file in the root directory:
-```env
-MONGODB_URI=mongodb://localhost:27017/wisdomhub
-```
-
-4. Start the development server:
-```bash
-npm run dev
-```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Database Setup
-
-Make sure MongoDB is running on your system. The application will automatically create the necessary collections when you first register a user.
-
-## Project Structure
-
-```
 src/
-├── app/                    # Next.js app directory
-│   ├── api/               # API routes
-│   │   ├── auth/          # Authentication endpoints
-│   │   └── boards/        # Board management endpoints
-│   ├── board/             # Board view pages
-│   ├── dashboard/         # Dashboard page
-│   ├── login/             # Login page
-│   └── register/          # Registration page
-├── components/            # React components
-│   ├── board-card.tsx     # Board card component
-│   ├── board-view.tsx     # Main board view
-│   ├── card.tsx           # Card component
-│   ├── list.tsx           # List component
-│   └── theme-toggle.tsx   # Theme toggle
-├── lib/                   # Utility functions
-│   ├── auth.ts           # Authentication utilities
-│   └── db.ts             # Database connection
-└── models/               # MongoDB models
-    ├── Board.ts          # Board model
-    └── User.ts           # User model
-```
-
-## API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-
-### Boards
-- `GET /api/boards` - Get user's boards
-- `POST /api/boards` - Create new board
-- `GET /api/boards/[id]` - Get specific board
-- `PUT /api/boards/[id]` - Update board
-- `DELETE /api/boards/[id]` - Delete board
-
-### Lists
-- `POST /api/boards/[id]/lists` - Create new list
-- `PUT /api/boards/[id]/lists/[listId]` - Update list
-- `DELETE /api/boards/[id]/lists/[listId]` - Delete list
-
-### Cards
-- `POST /api/boards/[id]/lists/[listId]/cards` - Create new card
-- `PUT /api/boards/[id]/lists/[listId]/cards/[cardId]` - Update card
-- `DELETE /api/boards/[id]/lists/[listId]/cards/[cardId]` - Delete card
-
-### Reordering
-- `POST /api/boards/[id]/reorder` - Reorder lists and cards
-
-## Features in Detail
-
-### Drag and Drop
-The application uses @dnd-kit for smooth drag and drop functionality:
-- Drag lists to reorder them horizontally
-- Drag cards to reorder them within lists
-- Drag cards between different lists
-- Visual feedback during dragging
-
-### Dark Mode
-- Automatic system preference detection
-- Manual toggle available on all pages
-- Smooth transitions between themes
-- Consistent styling across all components
-
-### Responsive Design
-- Mobile-first approach
-- Responsive grid layouts
-- Touch-friendly interactions
-- Optimized for all screen sizes
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
+├── app/
+│   ├── api/            # API routes (auth, boards, lists, cards)
+│   ├── dashboard/      # Main dashboard page
+│   ├── board/[id]/     # Individual board view
+│   ├── login/          # Login page
+│   └── register/       # Registration page
+├── components/         # Reusable UI components
+├── lib/                # DB connection, auth, CSRF helpers
+├── models/             # MongoDB models (Board, List, Card, User)
+├── types/              # TypeScript types
+└── utils/              # Logging, error handling
