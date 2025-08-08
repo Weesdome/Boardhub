@@ -96,6 +96,42 @@ Good UX isn’t just about functionality. I also included:
 
 ---
 
+---
+
+## ✅ Project Requirements Checklist
+
+| Requirement                           | Status | Notes                                                        |
+|-------------------------------------|--------|--------------------------------------------------------------|
+| Granular Git commits                 | Done   | Commit history shows atomic and meaningful commits           |
+| Pre-commit hook setup                | Done   | Runs lint and TypeScript checks before every commit          |
+| Manual authentication implementation| Done   | Custom auth with bcryptjs, cookies, CSRF protection          |
+| Drag-and-drop with `@dnd-kit`       | Done   | Smooth UX for reordering lists and cards                      |
+| Dark/light theme toggle              | Done   | System preference & manual toggling via `next-themes`        |
+| Loading and empty states             | Done   | Skeleton loaders and empty state UI included                  |
+| README.md with checklist and rationale | Done | This section documents project status and reasoning          |
+| Quick-start commands in README       | Done   | See below for npm and Docker instructions                     |
+| `.env.example` file included         | Done   | Sample env vars provided for local dev                        |
+
+---
+
+## 🎯 Stretch Goals Attempted
+
+I added a **global error boundary** component and a **custom 404 page** to improve user experience and app robustness beyond the minimal requirements. These additions help gracefully handle unexpected errors and improve routing feedback.
+
+---
+
+## 🚀 Quick Start
+
+### Using npm
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+
 ## 📁 Project Structure
 
 ```bash
