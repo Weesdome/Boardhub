@@ -25,9 +25,9 @@ From the earliest **low-fidelity sketches** to refined **mid-/high-fidelity wire
 ##  My Design Journey
 
 ###  Low-Fi to High-Fi Wireframes in Figma
-I began with **low-fidelity wireframes**—simple, grayscale layouts that helped me quickly explore structure and user flow with minimal friction :contentReference[oaicite:0]{index=0}. These early sketches made it easy to iterate rapidly and align my thinking before diving into visuals.
+I began with **low-fidelity wireframes**—simple, grayscale layouts that helped me quickly explore structure and user flow with minimal friction. These early sketches made it easy to iterate rapidly and align my thinking before diving into visuals.
 
-As clarity emerged, I evolved the designs to **mid-fidelity wireframes**, which added layout hierarchy, spacing, and more realistic proportions—without committing to full polish :contentReference[oaicite:1]{index=1}. The link above shows how the design matured over time, guiding development and ensuring the UI wasn't just functional but also thought-through.
+As clarity emerged, I evolved the designs to **mid-fidelity wireframes**, which added layout hierarchy, spacing, and more realistic proportions—without committing to full polish. The link above shows how the design matured over time, guiding development and ensuring the UI wasn't just functional but also thought-through.
 
 ---
 
